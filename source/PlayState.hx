@@ -173,6 +173,11 @@ class PlayState extends MusicBeatState
 	public static var changedDifficulty:Bool = false;
 	public static var chartingMode:Bool = false;
 
+	//for the credits at beginning of song lol!
+	var creditsText:FlxTypedGroup<FlxText>;
+	var creditoText:FlxText;
+	var box:FlxSprite;
+	
 	//Gameplay settings
 	public var healthGain:Float = 1;
 	public var healthLoss:Float = 1;
@@ -223,6 +228,8 @@ class PlayState extends MusicBeatState
 	var bgGirls:BackgroundGirls;
 	var wiggleShit:WiggleEffect = new WiggleEffect();
 	var bgGhouls:BGSprite;
+
+	var fgTrees:BGSprite;
 
 	public var songScore:Int = 0;
 	public var songHits:Int = 0;
@@ -426,6 +433,70 @@ class PlayState extends MusicBeatState
 					stageCurtains.updateHitbox();
 					add(stageCurtains);
 				}
+
+				case 'too-slow': // somncic!!!!
+				var sky:BGSprite = new BGSprite('PolishedP1/BGSky', -600, -200, 1, 1);
+				sky.setGraphicSize(Std.int(sky.width * 1.4));
+				add(sky);
+
+				var midTrees1:BGSprite = new BGSprite('PolishedP1/TreesMidBack', -600, -200, 0.7, 0.7);
+				midTrees1.setGraphicSize(Std.int(midTrees1.width * 1.4));
+				add(midTrees1);
+
+				var treesmid:BGSprite = new BGSprite('PolishedP1/TreesMid', -600, -200,  0.7, 0.7);
+				midTrees1.setGraphicSize(Std.int(midTrees1.width * 1.4));
+				add(treesmid);
+
+				var treesoutermid:BGSprite = new BGSprite('PolishedP1/TreesOuterMid1', -600, -200, 0.7, 0.7);
+				treesoutermid.setGraphicSize(Std.int(treesoutermid.width * 1.4));
+				add(treesoutermid);
+
+				var treesoutermid2:BGSprite = new BGSprite('PolishedP1/TreesOuterMid2', -600, -200,  0.7, 0.7);
+				treesoutermid2.setGraphicSize(Std.int(treesoutermid2.width * 1.4));
+				add(treesoutermid2);
+
+				var lefttrees:BGSprite = new BGSprite('PolishedP1/TreesLeft', -600, -200,  0.7, 0.7);
+				lefttrees.setGraphicSize(Std.int(lefttrees.width * 1.4));
+				add(lefttrees);
+
+				var righttrees:BGSprite = new BGSprite('PolishedP1/TreesRight', -600, -200, 0.7, 0.7);
+				righttrees.setGraphicSize(Std.int(righttrees.width * 1.4));
+				add(righttrees);
+
+				var outerbush:BGSprite = new BGSprite('PolishedP1/OuterBush', -600, -150, 1, 1);
+				outerbush.setGraphicSize(Std.int(outerbush.width * 1.4));
+				add(outerbush);
+
+				var outerbush2:BGSprite = new BGSprite('PolishedP1/OuterBushUp', -600, -200, 1, 1);
+				outerbush2.setGraphicSize(Std.int(outerbush2.width * 1.4));
+				add(outerbush2);
+
+				var grass:BGSprite = new BGSprite('PolishedP1/Grass', -600, -150, 1, 1);
+				grass.setGraphicSize(Std.int(grass.width * 1.4));
+				add(grass);
+
+				var deadegg:BGSprite = new BGSprite('PolishedP1/DeadEgg', -600, -200, 1, 1);
+				deadegg.setGraphicSize(Std.int(deadegg.width * 1.4));
+				add(deadegg);
+
+				var deadknux:BGSprite = new BGSprite('PolishedP1/DeadKnux', -600, -200, 1, 1);
+				deadknux.setGraphicSize(Std.int(deadknux.width * 1.4));
+				add(deadknux);
+
+				var deadtailz:BGSprite = new BGSprite('PolishedP1/DeadTailz', -700, -200, 1, 1);
+				deadtailz.setGraphicSize(Std.int(deadtailz.width * 1.4));
+				add(deadtailz);
+
+				var deadtailz1:BGSprite = new BGSprite('PolishedP1/DeadTailz1', -600, -200, 1, 1);
+				deadtailz1.setGraphicSize(Std.int(deadtailz1.width * 1.4));
+				add(deadtailz1);
+
+				var deadtailz2:BGSprite = new BGSprite('PolishedP1/DeadTailz2', -600, -400, 1, 1);
+				deadtailz2.setGraphicSize(Std.int(deadtailz2.width * 1.4));
+				add(deadtailz2);
+
+				fgTrees = new BGSprite('PolishedP1/TreesFG', -610, -200, 1.1, 1.1);
+				fgTrees.setGraphicSize(Std.int(fgTrees.width * 1.45));
 
 			case 'spooky': //Week 2
 				if(!ClientPrefs.lowQuality) {
@@ -2978,7 +3049,7 @@ class PlayState extends MusicBeatState
 		}
 		callOnLuas('onEvent', [eventName, value1, value2]);
 	}
-
+	
 	function moveCameraSection(?id:Int = 0):Void {
 		if(SONG.notes[id] == null) return;
 
